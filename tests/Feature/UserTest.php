@@ -15,6 +15,7 @@ class UserTest extends TestCase
     public function can_create_a_user()
     {
         $data = [
+            'name' => 'Rafa Nadal',
             'email' => 'email@example.com',
             'password' => 'password',
         ];
@@ -75,4 +76,5 @@ class UserTest extends TestCase
     }
 
     // TODO: Make it possible to search for users by email. Should return a list of matches. Add a new test for this.
+    // => search related test is in SearchByEmailTest
 }

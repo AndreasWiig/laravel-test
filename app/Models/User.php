@@ -46,15 +46,31 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function scopeCreatedAfter($query, Carbon $date)
+    public function scopeFilter($query, $filters)
     {
-        return $query->where('created_at', $date);
+        return $filters->apply($query);
     }
 
-    // TODO
-    // This should only be true for users that:
-    // - Signed up at least 1 year ago on Friday the 13th for some reason ¯\_(ツ)_/¯
-    // - Email must still be verified
+    public function scopeCreatedAfter($query, Carbon $date)
+    {
+        return $query->where('created_at', '>', $date);
+    }
+
+    public function scopeEmail($query, $email)
+    {
+        return $query->where('email', $email);
+    }
+
+    public function scopeVerifiedEmail($query)
+    {
+        return $query->whereNotNull('email_verified_at');
+    }
+
+    public function scopeSignedUpYearAgo($query)
+    {
+        return $query->where('email_verified_at', '<', Carbon::now()->subYear());
+    }
+
     public function getCanGetDiscountsAttribute() : bool
     {
         return $this->email_verified_at ? true : false;
