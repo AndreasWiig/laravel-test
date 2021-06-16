@@ -20,11 +20,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="175a492b-d2a2-4fa1-9a2b-0ca5a1256517" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Filters/Filters.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Filters/SearchFilters.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Feature/UserTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Feature/UserTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Filters/Filters.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Filters/Filters.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -169,7 +166,7 @@
       <option name="presentableId" value="Default" />
       <updated>1623742347149</updated>
       <workItem from="1623742348301" duration="998000" />
-      <workItem from="1623743353662" duration="23647000" />
+      <workItem from="1623743353662" duration="24625000" />
     </task>
     <servers />
   </component>

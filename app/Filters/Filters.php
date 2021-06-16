@@ -18,11 +18,10 @@ abstract class Filters
     public function apply($builder)
     {
         $this->builder = $builder;
-        collect($this->getFilters())->each(function ($value, $filter) {
-            if (method_exists($this, $filter)) {
-                 $this->$filter($value);
-            }
-        });
+        collect($this->getFilters())
+            ->filter(fn($value, $filter) => method_exists($this, $filter))
+            ->each(fn($value, $filter) => $this->$filter($value));
+
         return $this->builder;
 
     }
