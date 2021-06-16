@@ -57,6 +57,11 @@ class User extends Authenticatable
         return $query->where('created_at', '>', $date);
     }
 
+    public function scopeUserByEmail($query, $email)
+    {
+        $query->where('email', $email);
+    }
+
     public function scopeEmail($query, $email)
     {
         return $query->where('email', $email);

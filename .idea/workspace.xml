@@ -22,6 +22,7 @@
     <list default="true" id="175a492b-d2a2-4fa1-9a2b-0ca5a1256517" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AuthController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AuthController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -167,7 +168,7 @@
       <option name="presentableId" value="Default" />
       <updated>1623742347149</updated>
       <workItem from="1623742348301" duration="998000" />
-      <workItem from="1623743353662" duration="33571000" />
+      <workItem from="1623743353662" duration="35607000" />
     </task>
     <servers />
   </component>

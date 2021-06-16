@@ -26,10 +26,10 @@ Route::get('/users', [UserController::class, 'get']);
 
 // Public routes
 Route::post('/register', [AuthController::class, 'register']);
+Route::post('/login', [AuthController::class, 'login']);
 
 // Protected Routes
 Route::group(['middleware' => ['auth:sanctum']], function () {
-    Route::post('/login', [AuthController::class, 'login']);
     Route::post('/logout', [AuthController::class, 'logout']);
 });
 

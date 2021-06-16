@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\LoginUserRequest;
 use App\Http\Requests\RegisterUserRequest;
 use Illuminate\Http\Request;
 
@@ -18,9 +19,17 @@ class AuthController extends Controller
         ], 201);
     }
 
-    public function login(Request $request)
+    public function login(LoginUserRequest $request)
     {
-        dd("cetama");
+        if($request->checkCredentials()) {
+             return response()->json(['message' => 'incorrect credentials'], 401);
+        }
+
+        return response()->json([
+            'user' => $request->existingUser(),
+            'token' => $request->generateToken(),
+        ], 201);
+
     }
 
     public function logout(Request $request)
