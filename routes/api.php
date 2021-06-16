@@ -15,16 +15,17 @@ use App\Http\Controllers\UserController;
 |
 */
 
-// TODO: Move this to a new controller
-Route::get('/version', function () {
-    return response()->json(['version' => '0.0.1']);
-});
+Route::get('/version', [\App\Http\Controllers\VersionController::class, 'index']);
 
-// TODO: Make it possible to update a user with the PATCH HTTP method
 Route::post('/users', [UserController::class, 'store']);
 Route::get('/users/{id}', [UserController::class, 'show']);
+Route::patch('/users/{user}', [UserController::class, 'update']);
 Route::get('/users', [UserController::class, 'get']);
 
+// Public routes
+Route::post('/register', [\App\Http\Controllers\AuthController::class, 'register']);
+
+// Protected Routes
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });

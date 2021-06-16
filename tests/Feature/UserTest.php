@@ -26,6 +26,30 @@ class UserTest extends TestCase
     }
 
     /** @test */
+    public function can_update_a_user()
+    {
+        // for security reasons better to replace id with uuid
+        $user = User::factory()->create([
+            'name' => 'Rafa Nadal',
+            'email' => 'email@example.com',
+            'password' => 'password',
+        ]);
+
+        $response = $this->patch("/api/users/{$user->id}", [
+            'name' => 'Stefanos',
+            'email' => 'stafonos@montecarlo.com',
+        ]);
+
+        $response
+            ->assertStatus(201)
+            ->assertJsonFragment([
+                'name' => 'Stefanos',
+                'email' => 'stafonos@montecarlo.com',
+        ]);
+
+    }
+
+    /** @test */
     public function can_get_a_user()
     {
         $user = User::factory()->create();

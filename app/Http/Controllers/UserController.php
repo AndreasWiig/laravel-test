@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Filters\SearchFilters;
+use App\Http\Requests\UserUpdateRequest;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -19,9 +20,17 @@ class UserController extends Controller
         return response()->json($user, 201);
     }
 
+    // model binding could be used
     public function show($id)
     {
         return response()->json(User::find($id));
+    }
+
+    public function update(User $user, UserUpdateRequest $request)
+    {
+        $request->updateUser($user);
+
+        return response()->json($user, 201);
     }
 
     public function get(Request $request, SearchFilters $filters)
