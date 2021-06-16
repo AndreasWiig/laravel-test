@@ -21,9 +21,7 @@
   <component name="ChangeListManager">
     <list default="true" id="175a492b-d2a2-4fa1-9a2b-0ca5a1256517" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AuthController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AuthController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -168,7 +166,7 @@
       <option name="presentableId" value="Default" />
       <updated>1623742347149</updated>
       <workItem from="1623742348301" duration="998000" />
-      <workItem from="1623743353662" duration="35607000" />
+      <workItem from="1623743353662" duration="36213000" />
     </task>
     <servers />
   </component>
@@ -191,10 +189,10 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="458" y="209" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1440.900@0.0.1440.900" timestamp="1623760860537" />
-    <state x="421" y="205" width="597" height="490" key="find.popup" timestamp="1623758640105">
+    <state x="421" y="205" width="597" height="490" key="find.popup" timestamp="1623848781301">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
-    <state x="421" y="205" width="597" height="490" key="find.popup/0.0.1440.900@0.0.1440.900" timestamp="1623758640105" />
+    <state x="421" y="205" width="597" height="490" key="find.popup/0.0.1440.900@0.0.1440.900" timestamp="1623848781301" />
     <state x="385" y="196" width="670" height="676" key="search.everywhere.popup" timestamp="1623743784280">
       <screen x="0" y="0" width="1440" height="900" />
     </state>

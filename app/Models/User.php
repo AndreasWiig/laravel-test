@@ -47,6 +47,11 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public function IpLogs()
+    {
+        return $this->hasMany(IpLogging::class);
+    }
+
     public function scopeFilter($query, $filters)
     {
         return $filters->apply($query);
