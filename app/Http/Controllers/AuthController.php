@@ -24,9 +24,12 @@ class AuthController extends Controller
         if($request->checkCredentials()) {
              return response()->json(['message' => 'incorrect credentials'], 401);
         }
+        $existingUser = $request->existingUser();
+        $existingUser->logIpEntry();
+
 
         return response()->json([
-            'user' => $request->existingUser(),
+            'user' => $existingUser,
             'token' => $request->generateToken(),
         ], 201);
 

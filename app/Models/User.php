@@ -49,7 +49,7 @@ class User extends Authenticatable
 
     public function IpLogs()
     {
-        return $this->hasMany(IpLogging::class);
+        return $this->hasMany(Log::class);
     }
 
     public function scopeFilter($query, $filters)
@@ -85,5 +85,10 @@ class User extends Authenticatable
     public function getCanGetDiscountsAttribute() : bool
     {
         return $this->email_verified_at ? true : false;
+    }
+
+    public function logIpEntry()
+    {
+        return $this->IpLogs()->create();
     }
 }
