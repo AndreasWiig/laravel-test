@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Builders\UserBuilders;
 use Carbon\Carbon;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -52,34 +53,11 @@ class User extends Authenticatable
         return $this->hasMany(Log::class);
     }
 
-    public function scopeFilter($query, $filters)
-    {
-        return $filters->apply($query);
-    }
+    // scopes Builder
 
-    public function scopeCreatedAfter($query, Carbon $date)
+    public function newEloquentBuilder($query)
     {
-        return $query->where('created_at', '>', $date);
-    }
-
-    public function scopeUserByEmail($query, $email)
-    {
-        $query->where('email', $email);
-    }
-
-    public function scopeEmail($query, $email)
-    {
-        return $query->where('email', $email);
-    }
-
-    public function scopeVerifiedEmail($query)
-    {
-        return $query->whereNotNull('email_verified_at');
-    }
-
-    public function scopeSignedUpYearAgo($query)
-    {
-        return $query->where('email_verified_at', '<', Carbon::now()->subYear());
+        return new UserBuilders($query);
     }
 
     public function getCanGetDiscountsAttribute() : bool
