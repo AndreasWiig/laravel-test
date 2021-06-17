@@ -3,6 +3,7 @@
 namespace Tests\Feature;
 
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
@@ -29,10 +30,11 @@ class UserSearchByEmailTest extends TestCase
         $user1 = User::factory()->create([
             'name' => 'Rafa Nadal',
             'email' => 'rafa.nadal@rollandgarros.com',
-            'email_verified_at' => '2020-06-16'
+            'email_verified_at' => Carbon::today()
         ]);
 
-        $this->get('/api/users?filter[email]=' . $user1->email)->assertJsonCount(0);
+        $this->get('/api/users?filter[email]=' . $user1->email)
+            ->assertJsonCount(0);
     }
 
     /** @test */

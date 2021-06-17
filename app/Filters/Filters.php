@@ -21,7 +21,6 @@ abstract class Filters
         collect($this->getFilters())
             ->filter(fn($value, $filter) => method_exists($this, $filter))
             ->each(fn($value, $filter) => $this->$filter($value));
-
         return $this->builder;
 
     }

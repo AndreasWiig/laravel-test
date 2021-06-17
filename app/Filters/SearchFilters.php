@@ -16,6 +16,6 @@ class SearchFilters extends Filters
 
     public function email($email)
     {
-        return $this->builder->verifiedEmail()->signedUpYearAgo()->email($email);
+        return $this->builder->verifiedEmail()->signedUpYearAgo()->userByEmail($email);
     }
 }
