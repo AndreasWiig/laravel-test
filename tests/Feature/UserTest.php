@@ -15,6 +15,7 @@ class UserTest extends TestCase
     public function can_create_a_user()
     {
         $data = [
+            'name' => 'Rafa Nadal',
             'email' => 'email@example.com',
             'password' => 'password',
         ];
@@ -22,6 +23,30 @@ class UserTest extends TestCase
             ->assertStatus(201)
             ->assertJsonStructure(['id', 'name', 'email'])
             ->assertDontSee('password');
+    }
+
+    /** @test */
+    public function can_update_a_user()
+    {
+        // for security reasons better to replace id with uuid
+        $user = User::factory()->create([
+            'name' => 'Rafa Nadal',
+            'email' => 'email@example.com',
+            'password' => 'password',
+        ]);
+
+        $response = $this->patch("/api/users/{$user->id}", [
+            'name' => 'Stefanos',
+            'email' => 'stafonos@montecarlo.com',
+        ]);
+
+        $response
+            ->assertStatus(201)
+            ->assertJsonFragment([
+                'name' => 'Stefanos',
+                'email' => 'stafonos@montecarlo.com',
+        ]);
+
     }
 
     /** @test */
@@ -75,4 +100,5 @@ class UserTest extends TestCase
     }
 
     // TODO: Make it possible to search for users by email. Should return a list of matches. Add a new test for this.
+    // => search related test is in SearchByEmailTest
 }

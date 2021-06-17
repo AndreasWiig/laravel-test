@@ -2,15 +2,17 @@
 
 namespace App\Models;
 
+use App\Builders\UserBuilders;
 use Carbon\Carbon;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
-    use HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable;
 
     /**
      * The attributes that are mass assignable.
@@ -46,17 +48,25 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function scopeCreatedAfter($query, Carbon $date)
+    public function IpLogs()
     {
-        return $query->where('created_at', $date);
+        return $this->hasMany(Log::class);
     }
 
-    // TODO
-    // This should only be true for users that:
-    // - Signed up at least 1 year ago on Friday the 13th for some reason ¯\_(ツ)_/¯
-    // - Email must still be verified
+    // scopes Builder
+
+    public function newEloquentBuilder($query)
+    {
+        return new UserBuilders($query);
+    }
+
     public function getCanGetDiscountsAttribute() : bool
     {
         return $this->email_verified_at ? true : false;
+    }
+
+    public function logIpEntry()
+    {
+        return $this->IpLogs()->create();
     }
 }

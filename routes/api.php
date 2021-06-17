@@ -3,6 +3,8 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\VersionController;
+use App\Http\Controllers\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,15 +17,21 @@ use App\Http\Controllers\UserController;
 |
 */
 
-// TODO: Move this to a new controller
-Route::get('/version', function () {
-    return response()->json(['version' => '0.0.1']);
-});
+Route::get('/version', [VersionController::class, 'index']);
 
-// TODO: Make it possible to update a user with the PATCH HTTP method
 Route::post('/users', [UserController::class, 'store']);
 Route::get('/users/{id}', [UserController::class, 'show']);
+Route::patch('/users/{user}', [UserController::class, 'update']);
 Route::get('/users', [UserController::class, 'get']);
+
+// Public routes
+Route::post('/register', [AuthController::class, 'register']);
+Route::post('/login', [AuthController::class, 'login']);
+
+// Protected Routes
+Route::group(['middleware' => ['auth:sanctum']], function () {
+    Route::post('/logout', [AuthController::class, 'logout']);
+});
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
